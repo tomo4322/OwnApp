@@ -34,6 +34,7 @@ class ItemController extends Controller
         ]);
        
         $item = new Item;
+        $item->user_id = auth()->user()->id;
         $item->trade_day = $validatedData['trade_day'];
         $item->trade_place = $validatedData['trade_place'];
         $item->item_name = $validatedData['item_name'];

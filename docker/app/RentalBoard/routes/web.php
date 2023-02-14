@@ -20,10 +20,10 @@ Route::get('/', [PrefectureController::class, 'getPrefecture']);
 
 // 出品画面表示
 
-Route::get('/putUp', [ItemController::class, 'getPrefecture']);
+Route::get('/putUp', [ItemController::class, 'getPrefecture'])->middleware(['auth']);
 
 // 出品完了画面を表示
-Route::post('/putUp', [ItemController::class, 'create'])->name('putUp');
+Route::post('/putUp', [ItemController::class, 'create'])->name('putUp')->middleware(['auth']);
 // Route::get('/completePutup', function () {
 //     return view('Users.completePutup');
 // })->middleware(['auth'])->name('completePutup');
