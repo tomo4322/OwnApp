@@ -15,6 +15,6 @@
                 完了メッセージを送信いたしました。
             </h2>
         </div>
-        <div class="completeBtn"><a href="{{ route('Top') }}">トップ画面へ</a></div>
+        <div class="completeBtn"><a href="{{ route('top') }}">トップ画面へ</a></div>
         </div>
 </body>

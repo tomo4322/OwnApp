@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Region;
+use App\Models\Item;
 
 class prefecture extends Model
 {
@@ -21,8 +22,13 @@ class prefecture extends Model
 
     use HasFactory;
 
-    public function region()
+    public function regions()
     {
         return $this->belongsTo(Region::class);
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
     }
 }

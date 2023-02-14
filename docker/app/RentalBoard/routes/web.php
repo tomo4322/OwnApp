@@ -16,17 +16,18 @@ use App\Http\Controllers\ItemController;
 */
 
 // トップ画面を表示
-Route::get('/', [PrefectureController::class, 'getPrefecture']);
+Route::get('/', [PrefectureController::class, 'getPrefecture'])->name('top');
 
 // 出品画面表示
 
-Route::get('/putUp', [ItemController::class, 'getPrefecture'])->middleware(['auth']);
+Route::get('/putUp', [ItemController::class, 'getData'])->middleware(['auth']);
 
 // 出品完了画面を表示
 Route::post('/putUp', [ItemController::class, 'create'])->name('putUp')->middleware(['auth']);
-// Route::get('/completePutup', function () {
-//     return view('Users.completePutup');
-// })->middleware(['auth'])->name('completePutup');
+
+Route::post('/completePutup', function () {
+    return view('Users.completePutup');
+})->middleware(['auth'])->name('completePutup');
 
 
 // マイページ画面を表示
@@ -34,20 +35,17 @@ Route::get('/mypage', function () {
     return view('Users.mypage');
 })->middleware(['auth'])->name('mypage');
 
-// 出品画面を表示
-// Route::get('/putUp', function () {
-//     return view('Users.putUp');
-// })->middleware(['auth'])->name('putUp');
-
 // 会員情報画面を表示
 Route::get('/userDetail', function () {
     return view('Users.userDetail');
 })->middleware(['auth'])->name('userDetail');
 
 // 出品商品画面を表示
-Route::get('/showItems', function () {
-    return view('Users.showItems');
-})->middleware(['auth'])->name('showItems');
+Route::get('/showItems', [ItemController::class, 'showItem'])->middleware(['auth']);
+
+// Route::get('/showItems', function () {
+//     return view('Users.showItems');
+// })->middleware(['auth'])->name('showItems');
 
 
 

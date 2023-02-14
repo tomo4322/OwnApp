@@ -22,9 +22,6 @@
                     <th class="contact-item" >都道府県を選択してください</th>
                     <td>
                         <select name="prefecture_id">
-                            {{--@foreach($prefectures as $prefecuture)
-                                <option value="{{ $prefecture->id }}">{{ $prefecture->name }}</option>
-                                @endforeach--}}
                         </select>
                     </td>
                 </tr>

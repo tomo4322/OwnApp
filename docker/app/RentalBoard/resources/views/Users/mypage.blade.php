@@ -13,7 +13,7 @@
     <div class="header-menu">
         <ul>
             <li><a href="{{ route('putUp') }}" class="headerBtn">出品</a></li>
-            <li><a href="{{ route('Top') }}" class="headerBtn">ログアウト</a></li>
+            <li><a href="{{ route('top') }}" class="headerBtn">ログアウト</a></li>
         </ul>
     </div>
 </header>

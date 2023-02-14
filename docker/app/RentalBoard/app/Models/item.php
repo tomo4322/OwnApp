@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Model\User;
+use App\Models\Prefecture;
+use App\Models\Brand;
 
 class Item extends Model
 {
@@ -31,4 +33,16 @@ class Item extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function prefectures()
+    {
+        return $this->belongsTo(Prefecture::class);
+    }
+
+    public function brands()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+
 }

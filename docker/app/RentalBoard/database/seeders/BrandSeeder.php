@@ -17,17 +17,17 @@ class BrandSeeder extends Seeder
         //
         $brands = [
 
-            "name" => "Channel Islands Surfboards",
-            "name" => "DHD",
-            "name" => "シャープアイ",
-            "name" => "JS surfboards",
-            "name" => "ロスト",
-            "name" => "チリサーフボード",
-            "name" => "その他"
+            "Channel Islands Surfboards",
+            "DHD",
+            "シャープアイ",
+            "JS surfboards",
+            "ロスト",
+            "チリサーフボード",
+            "その他",
         ];
 
         foreach ($brands as $brand) {
-            DB::table('brands')->insert([$brand]);
+            DB::table('brands')->insert(['name' => $brand]);
         }
     }
 }

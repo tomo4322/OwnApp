@@ -14,7 +14,7 @@
         <ul>
         <li><a href="{{ route('mypage') }}" class="headerBtn">マイページ</a></li>
         <li><a href="{{ route('putUp') }}" class="headerBtn">出品</a></li>
-        <li><a href="{{ route('Top') }}" class="headerBtn">ログアウト</a></li>
+        <li><a href="{{ route('top') }}" class="headerBtn">ログアウト</a></li>
         </ul>
     </div>
 </header>
@@ -25,6 +25,7 @@
     <div class="table">
         <table class="userItemsTable">
             <tr>
+                <th>ID</th>
                 <th>出品日</th>
                 <th>希望日時</th>
                 <th>都道府県</th>
@@ -38,19 +39,20 @@
                 <th>編集</th>
                 <th>削除</th>
             </tr> 
-            Dbから取得したデータをループさせて表示
-            {{-- @foreach($prefectures as $pref) --}}
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>     
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                @foreach($items as $item)
+                <td>{{ $item->id }}</td>
+                <td>{{ $item->created_at}}</td>
+                <td>{{ $item->trade_day }}</td>     
+                <td>{{ $item->prefecture_id }}</td>
+                <td>{{ $item->trade_place }}</td>
+                <td>{{ $item->brand_id }}</td>
+                <td>{{ $item->item_name }}</td>
+                <td>{{ $item->length }}</td>
+                <td>{{ $item->float }}</td>
+                <td>{{ $item->select }}</td>
+                <td>{{ $item->price }}</td>
+                @endforeach
                 <td>
                     <a class="btn" href="{{ route('updateItems') }}">編集</a> <!--- 編集ボタンクリック時にクリック箇所のidをGETでに渡している --->
                 </td>
@@ -58,7 +60,6 @@
                     <a href="{{ route('showItems') }}" onclick="return confirm('本当に削除しますか？')" name="delete">削除</a> <!--- 削除ボタンクリック時にポップアップ表示 --->
                 </td>
             </tr>
-            {{-- @endforeach --}}
         </table>
         <div>
             <button type="button" onClick="history.back()">戻る</button>

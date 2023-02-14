@@ -44,7 +44,12 @@
                 <tr>
                     <th class="contact-item">サーフブランド名</th>
                     <td>
-                    <input type="text" name="brand" class="form-text" value="{{ old('brand') }}" placeholder="例)アルメリック"/> 
+                    <select name="brand_id">
+                        <option hidden>選択してください</option>
+                        @foreach($brands as $brand)
+                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endforeach
+                    {{-- <input type="text" name="brand" class="form-text" value="{{ old('brand') }}" placeholder="例)アルメリック"/>  --}}
                     </td>
                 </tr>
                 <tr>
