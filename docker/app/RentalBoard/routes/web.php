@@ -19,12 +19,14 @@ use App\Http\Controllers\ItemController;
 Route::get('/', [PrefectureController::class, 'getPrefecture']);
 
 // 出品画面表示
-// Route::prefix('Users')->group(function () {
-//     Route::post('putUp', [ItemController::class, 'create']);
-//     Route::get('putUp', [ItemController::class, 'getPrefecture']);
-// });
 
 Route::get('/putUp', [ItemController::class, 'getPrefecture']);
+
+// 出品完了画面を表示
+Route::post('/putUp', [ItemController::class, 'create'])->name('putUp');
+// Route::get('/completePutup', function () {
+//     return view('Users.completePutup');
+// })->middleware(['auth'])->name('completePutup');
 
 
 // マイページ画面を表示
@@ -47,10 +49,7 @@ Route::get('/showItems', function () {
     return view('Users.showItems');
 })->middleware(['auth'])->name('showItems');
 
-// 出品完了画面を表示
-Route::get('/completePutup', function () {
-    return view('Users.completePutup');
-})->middleware(['auth'])->name('completePutup');
+
 
 // 会員編集画面を表示
 Route::get('/userUpdate', function () {

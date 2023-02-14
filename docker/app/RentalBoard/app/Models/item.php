@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Model\User;
 
-class item extends Model
+class Item extends Model
 {
     /**
      * The attributes that are mass assignable.
