@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\item;
 use App\Models\region;
 use App\Models\brand;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -40,7 +41,6 @@ class ItemController extends Controller
         $item->save();
 
         return view('Users.completePutup');
-
     }
 
     public function getData()
@@ -56,7 +56,7 @@ class ItemController extends Controller
         $user_id = Auth::id();
         // $items = Item::with('user_id', '=', $user_id)->get();
         $items = DB::table('items')->where('user_id', '=', $user_id)->get();
-        return view('Users.showItems', compact('items'));
-
+        $pre = item::with('prefectures')->get();
+        return view('Users.showItems', compact('items', 'pre'));
     }
 }

@@ -41,7 +41,7 @@ Route::get('/userDetail', function () {
 })->middleware(['auth'])->name('userDetail');
 
 // 出品商品画面を表示
-Route::get('/showItems', [ItemController::class, 'showItem'])->middleware(['auth']);
+Route::get('/showItems', [ItemController::class, 'showItem'])->middleware(['auth'])->name('showItems');
 
 // Route::get('/showItems', function () {
 //     return view('Users.showItems');
@@ -58,11 +58,6 @@ Route::get('/userUpdate', function () {
 Route::get('/updateItems', function () {
     return view('Users.updateItems');
 })->middleware(['auth'])->name('updateItems');
-
-// 商品一覧画面を表示
-Route::get('/showItems', function () {
-    return view('Users.showItems');
-})->middleware(['auth'])->name('showItems');
 
 // トップの商品一覧画面を表示
 Route::get('/TopShowItems', function () {

@@ -39,12 +39,12 @@
                 <th>編集</th>
                 <th>削除</th>
             </tr> 
+            @foreach($items as $item)
             <tr>
-                @foreach($items as $item)
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->created_at}}</td>
-                <td>{{ $item->trade_day }}</td>     
-                <td>{{ $item->prefecture_id }}</td>
+                <td>{{ $item->trade_day }}</td> 
+                <td>{{ $pre->name}}</td>       
                 <td>{{ $item->trade_place }}</td>
                 <td>{{ $item->brand_id }}</td>
                 <td>{{ $item->item_name }}</td>
@@ -52,7 +52,6 @@
                 <td>{{ $item->float }}</td>
                 <td>{{ $item->select }}</td>
                 <td>{{ $item->price }}</td>
-                @endforeach
                 <td>
                     <a class="btn" href="{{ route('updateItems') }}">編集</a> <!--- 編集ボタンクリック時にクリック箇所のidをGETでに渡している --->
                 </td>
@@ -60,6 +59,7 @@
                     <a href="{{ route('showItems') }}" onclick="return confirm('本当に削除しますか？')" name="delete">削除</a> <!--- 削除ボタンクリック時にポップアップ表示 --->
                 </td>
             </tr>
+            @endforeach
         </table>
         <div>
             <button type="button" onClick="history.back()">戻る</button>
