@@ -41,10 +41,11 @@
             </tr> 
             @foreach($items as $item)
             <tr>
+                @foreach($pres->prefecture as $prefecture)
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->created_at}}</td>
                 <td>{{ $item->trade_day }}</td> 
-                <td>{{ $pre->name}}</td>       
+                <td>{{ $prefecture->name}}</td>     
                 <td>{{ $item->trade_place }}</td>
                 <td>{{ $item->brand_id }}</td>
                 <td>{{ $item->item_name }}</td>
@@ -58,6 +59,7 @@
                 <td class="delete">
                     <a href="{{ route('showItems') }}" onclick="return confirm('本当に削除しますか？')" name="delete">削除</a> <!--- 削除ボタンクリック時にポップアップ表示 --->
                 </td>
+            @endforeach
             </tr>
             @endforeach
         </table>

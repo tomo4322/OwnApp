@@ -49,6 +49,7 @@ class User extends Authenticatable
 
     public function iterms()
     {
-        return $this->belongsTo(Item::class);
+        // return $this->belongsTo(Item::class);
+        return $this->hasMany(Item::class);
     }
 }

@@ -29,17 +29,18 @@ class Item extends Model
 
     use HasFactory;
 
-    public function users()
+    public function user()
     {
-        return $this->hasMany(User::class);
+        // return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function prefectures()
+    public function prefecture()
     {
         return $this->belongsTo(Prefecture::class);
     }
 
-    public function brands()
+    public function brand()
     {
         return $this->belongsTo(Brand::class);
     }

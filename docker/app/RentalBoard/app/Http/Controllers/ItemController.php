@@ -16,6 +16,7 @@ class ItemController extends Controller
     {
 
         $validatedData = $request->validate([
+            'user_id' => 'required|max:20',
             'prefecture_id' => 'required|max:20',
             'brand_id' => 'required|max:20',
             'trade_day' => 'required',
@@ -56,7 +57,8 @@ class ItemController extends Controller
         $user_id = Auth::id();
         // $items = Item::with('user_id', '=', $user_id)->get();
         $items = DB::table('items')->where('user_id', '=', $user_id)->get();
-        $pre = item::with('prefectures')->get();
-        return view('Users.showItems', compact('items', 'pre'));
+        $pres = item::with('prefecture')->get();
+        // dd($pres);
+        return view('Users.showItems', compact('items', 'pres'));
     }
 }

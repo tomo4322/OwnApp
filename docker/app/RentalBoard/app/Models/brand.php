@@ -15,6 +15,7 @@ class Brand extends Model
     use HasFactory;
     public function items()
     {
-        return $this->hasMany(Item::class);
+        return $this->belongsTo(Item::class);
+        // return $this->hasMany(Item::class);
     }
 }
