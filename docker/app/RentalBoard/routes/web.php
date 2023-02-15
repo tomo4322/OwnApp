@@ -38,10 +38,11 @@ Route::post('/completePutup', function () {
 Route::get('/showItems', [ItemController::class, 'showItem'])->middleware(['auth'])->name('showItems');
 
 // 出品商品編集画面を表示
-Route::get('/updateItems/{id}', [ItemController::class, 'updateItem'])->middleware(['auth'])->name('updateItems');
+Route::post('/updateItems/{id}', [ItemController::class, 'updateItem'])->middleware(['auth'])->name('updateItem');
+Route::get('/updateItems/{id}', [ItemController::class, 'editItem'])->middleware(['auth'])->name('editItem');
 
-
-
+// 出品商品削除
+Route::delete('/showItems/{id}', [ItemController::class, 'destroy'])->middleware(['auth'])->name('destroy');
 
 // 会員情報画面を表示
 Route::get('/userDetail', function () {
@@ -61,10 +62,6 @@ Route::get('/userUpdate', function () {
     return view('Users.userUpdate');
 })->middleware(['auth'])->name('userUpdate');
 
-// // 商品編集画面を表示
-// Route::get('/updateItems', function () {
-//     return view('Users.updateItems');
-// })->middleware(['auth'])->name('updateItems');
 
 // トップの商品一覧画面を表示
 Route::get('/TopShowItems', function () {

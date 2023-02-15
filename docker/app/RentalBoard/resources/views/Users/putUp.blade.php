@@ -11,7 +11,7 @@
         <h1 class="createText">出品する</h1>
         @foreach ($errors->all() as $error)
         <p class="error">{{ $error }}</p>
-    @endforeach
+        @endforeach
         <form action="{{ route('putUp') }}" method="post" name="create-form">
             @csrf
             <input type="hidden" name="user_id" value="{{ Auth::id() }}">

@@ -46,20 +46,26 @@
                 <td>{{ $item->trade_day }}</td> 
                 <td>{{ $item->prefecture->name}}</td>     
                 <td>{{ $item->trade_place }}</td>
-                <td>{{ $item->brand_id }}</td>
+                <td>{{ $item->brand->name }}</td>
                 <td>{{ $item->item_name }}</td>
                 <td>{{ $item->length }}</td>
                 <td>{{ $item->float }}</td>
                 <td>{{ $item->select }}</td>
                 <td>{{ $item->price }}</td>
                 <td>
-                    <a class="btn" href="{{ route('updateItems', $item->id) }}">編集</a> <!--- 編集ボタンクリック時にクリック箇所のidをGETでに渡している --->
+                    {{-- <a class="btn" href="{{ route('updateItem', $item->id) }}">編集</a> <!--- 編集ボタンクリック時にクリック箇所のidをGETでに渡している ---> --}}
+                    <button type="button" onclick="location.href='{{ route('updateItem', $item->id) }}'">編集</button>
                 </td>
+                <form action="{{ route('destroy', $item->id) }}" method="post" name="create-form">
+                    @csrf
+                    @method('delete')
                 <td class="delete">
-                    <a href="{{ route('showItems', $item->id) }}" onclick="return confirm('本当に削除しますか？')" name="delete">削除</a> <!--- 削除ボタンクリック時にポップアップ表示 --->
+                    <input type="submit" onclick="return confirm('本当に削除しますか？')" value="削除">
+                    {{-- <a href="{{ route('showItems', $item->id) }}" onclick="return confirm('本当に削除しますか？')" name="delete">削除</a> <!--- 削除ボタンクリック時にポップアップ表示 ---> --}}
                 </td>
             </tr>
             @endforeach
+            </form>
         </table>
         <div>
             <button type="button" onClick="history.back()">戻る</button>
