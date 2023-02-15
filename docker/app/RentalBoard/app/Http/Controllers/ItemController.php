@@ -55,10 +55,16 @@ class ItemController extends Controller
     public function showItem(Request $request)
     {
         $user_id = Auth::id();
-        // $items = Item::with('user_id', '=', $user_id)->get();
-        $items = DB::table('items')->where('user_id', '=', $user_id)->get();
-        $pres = item::with('prefecture')->get();
-        // dd($pres);
-        return view('Users.showItems', compact('items', 'pres'));
+        $items = Item::with('prefecture')->where('user_id', '=', $user_id)->get();
+        return view('Users.showItems', compact('items'));
+    }
+
+    public function updateItem(Request $request)
+    {
+        $id = $request->id;
+        dd($id);
+        // $brands = DB::table('brands')->get();
+        $items = Item::with('prefecture', 'brands')->where('id', '=', $id)->get();
+        return view('Users.updateItem', compact('brands', 'items'));
     }
 }

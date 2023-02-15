@@ -27,7 +27,7 @@
             <tr>
                 <th>ID</th>
                 <th>出品日</th>
-                <th>希望日時</th>
+                <th>希望日</th>
                 <th>都道府県</th>
                 <th>希望取引場所</th>
                 <th>ブランド名</th>
@@ -41,11 +41,10 @@
             </tr> 
             @foreach($items as $item)
             <tr>
-                @foreach($pres->prefecture as $prefecture)
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->created_at}}</td>
                 <td>{{ $item->trade_day }}</td> 
-                <td>{{ $prefecture->name}}</td>     
+                <td>{{ $item->prefecture->name}}</td>     
                 <td>{{ $item->trade_place }}</td>
                 <td>{{ $item->brand_id }}</td>
                 <td>{{ $item->item_name }}</td>
@@ -54,12 +53,11 @@
                 <td>{{ $item->select }}</td>
                 <td>{{ $item->price }}</td>
                 <td>
-                    <a class="btn" href="{{ route('updateItems') }}">編集</a> <!--- 編集ボタンクリック時にクリック箇所のidをGETでに渡している --->
+                    <a class="btn" href="{{ route('updateItems', $item->id) }}">編集</a> <!--- 編集ボタンクリック時にクリック箇所のidをGETでに渡している --->
                 </td>
                 <td class="delete">
-                    <a href="{{ route('showItems') }}" onclick="return confirm('本当に削除しますか？')" name="delete">削除</a> <!--- 削除ボタンクリック時にポップアップ表示 --->
+                    <a href="{{ route('showItems', $item->id) }}" onclick="return confirm('本当に削除しますか？')" name="delete">削除</a> <!--- 削除ボタンクリック時にポップアップ表示 --->
                 </td>
-            @endforeach
             </tr>
             @endforeach
         </table>

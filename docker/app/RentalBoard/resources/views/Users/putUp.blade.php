@@ -14,6 +14,7 @@
     @endforeach
         <form action="{{ route('putUp') }}" method="post" name="create-form">
             @csrf
+            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
         <table class="contact-table">
             <table>
                 <tr>
@@ -49,7 +50,7 @@
                         @foreach($brands as $brand)
                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                         @endforeach
-                    {{-- <input type="text" name="brand" class="form-text" value="{{ old('brand') }}" placeholder="例)アルメリック"/>  --}}
+                    </select>
                     </td>
                 </tr>
                 <tr>

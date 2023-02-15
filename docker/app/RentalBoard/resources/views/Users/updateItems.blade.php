@@ -22,6 +22,10 @@
                     <th class="contact-item" >都道府県を選択してください</th>
                     <td>
                         <select name="prefecture_id">
+                            {{-- @foreach($items as $item)
+                            <option hidden>選択してください</option>
+                            <option value="{{ $item->prefecture->id }}">{{ $item->prefecture->name }}</option>d
+                            @endforeach --}}
                         </select>
                     </td>
                 </tr>
@@ -34,7 +38,12 @@
                 <tr>
                     <th class="contact-item">サーフブランド名</th>
                     <td>
-                    <input type="text" name="brand" class="form-text" value=""/> 
+                        <select name="brand_id">
+                            {{-- <option hidden>選択してください</option>
+                            @foreach($brands as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                            @endforeach --}}
+                        </select>
                     </td>
                 </tr>
                 <tr>
