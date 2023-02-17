@@ -46,9 +46,9 @@
                 <th>お問い合わせ</th>
             </tr> 
             {{-- トップ画面でクリックされた都道府県とひも付いたデータをDbから取得してループさせて表示 --}}
-            {{-- @foreach($items as $item) --}}
+            @foreach($items as $item)
             <tr>
-                {{-- <td>{{ \Carbon\Carbon::parse($item->created_at)->format('Y/m/d') }}</td>
+                <td>{{ \Carbon\Carbon::parse($item->created_at)->format('Y/m/d') }}</td>
                 <td>{{ $item->trade_day }}</td> 
                 <td>{{ $item->prefecture->name}}</td>     
                 <td>{{ $item->trade_place }}</td>
@@ -57,7 +57,7 @@
                 <td>{{ $item->length }}</td>
                 <td>{{ $item->float }}</td>
                 <td>{{ $item->select }}</td>
-                <td>{{ $item->price }}</td> --}}
+                <td>{{ $item->price }}</td>
                 <td>
                     <p>💛</p> 
                 </td>
@@ -65,7 +65,7 @@
                     <a href="" name="chat">チャットする</a> 
                 </td>
             </tr>
-            {{-- @endforeach --}}
+            @endforea   ch
         </table>
         <div>
             <button type="button" onClick="history.back()">戻る</button>

@@ -9,7 +9,6 @@ class OwnerController extends Controller
     //
     public function index()
     {
-        dd('あ');
-        return view('/owner/admin');
+        return view('/Admin.admin');
     }
 }

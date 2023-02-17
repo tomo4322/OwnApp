@@ -105,4 +105,17 @@ class ItemController extends Controller
         
         return redirect()->route('showItems');
     }
+
+    // 都道府県毎の出品商品を表示
+
+    public function showPreItems(Request $request)
+    {
+        $id = $request->id;
+
+        $items = Item::with('prefecture')->where('prefecture_id', '=', $id)->get();
+        
+        
+
+        return view('Users.TopShowItems', compact('items'));
+    }
 }

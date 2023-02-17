@@ -12,7 +12,7 @@
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
-            @if ('owner_auth')
+            @if (auth()->check() && auth()->user()->isAdmin())
                 <a href="{{ route('admin') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">管理者ページ</a>
             @endif
                 <a href="{{ url('/mypage') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">マイページ</a>
@@ -47,7 +47,7 @@
         <tr>
         <td>{{$region->name}}</td>
         @foreach($region->prefectures as $prefecture)
-        <td><a href="{{ route('TopShowItems', $prefecture->id) }}">{{$prefecture->name}}</a></td>
+        <td><a href="{{ route('TopShowItems', ['id' => $prefecture->id]) }}">{{$prefecture->name}}</a></td>
         @endforeach
         </tr>
         @endforeach

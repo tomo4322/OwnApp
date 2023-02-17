@@ -70,9 +70,11 @@ Route::get('/', [PrefectureController::class, 'getPrefecture'])->name('top');
 
 
     // トップの商品一覧画面を表示
-    Route::get('/TopShowItems', function () {
-        return view('Users.TopShowItems');
-    })->name('TopShowItems');
+    // Route::get('/TopShowItems', function () {
+    //     return view('Users.TopShowItems');
+    // })->name('TopShowItems');
+
+    Route::get('/TopShowItems', [ItemController::class, 'showPreItems'])->middleware(['auth'])->name('TopShowItems');
 
     // 検索結果を表示
     Route::get('/searchItems', [SearchController::class, 'search'])->name('searchItems');
