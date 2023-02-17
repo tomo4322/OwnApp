@@ -8,33 +8,28 @@
 </head>
 <header>
     <div class="header-title">
-        <h1 class="title">Rent a Board</h1>
-    </div>
-        <div class="header-menu">
-        <ul>
-        {{-- <li><a href="{{ route('mypage') }}" class="headerBtn">管理画面</a></li>
-        <li><a href="{{ route('mypage') }}" class="headerBtn">マイページ</a></li>
-        <li><a href="{{ route('putUp') }}" class="headerBtn">出品</a></li> --}}
-        </ul>
-    </div>
+        <h1 class="title"><a href="{{ route('top') }}" class="headerBtn">Rent a Board</a></h1>
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
+            @if ('owner_auth')
+                <a href="{{ route('admin') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">管理者ページ</a>
+            @endif
                 <a href="{{ url('/mypage') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">マイページ</a>
                 <a href="{{ url('/putUp') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">出品</a>
             @else
-                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ログイン</a>
 
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">会員登録</a>
                 @endif
             @endauth
         </div>
     @endif
     <div class="BoardSearch">
-        <form  action="" method="post">
-            <input type="search" name="search" placeholder="都道府県またはサーフボードブランドを入力">
-            <input type="submit" name="submit" value="検索">
+        <form  action="{{ route('searchItems') }}" method="get">
+            <input type="search" name="keyword" placeholder="都道府県またはサーフボードブランドを入力">
+            <button type="submit">検索</button>
         </form>
     </div>
 </header>
@@ -52,7 +47,7 @@
         <tr>
         <td>{{$region->name}}</td>
         @foreach($region->prefectures as $prefecture)
-        <td><a href="">{{$prefecture->name}}</a></td>
+        <td><a href="{{ route('TopShowItems', $prefecture->id) }}">{{$prefecture->name}}</a></td>
         @endforeach
         </tr>
         @endforeach

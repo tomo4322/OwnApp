@@ -28,6 +28,7 @@ class User extends Authenticatable
         'password',
     ];
 
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -47,9 +48,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function iterms()
+    public function items()
     {
         // return $this->belongsTo(Item::class);
         return $this->hasMany(Item::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role_id === 10;
     }
 }

@@ -53,7 +53,7 @@ class ItemController extends Controller
         return view('Users.putUp', compact('regions', 'brands'));
     }
 
-    public function showItem(Request $request)
+    public function showItem()
     {
         $user_id = Auth::id();
         $items = Item::with('prefecture')->where('user_id', '=', $user_id)->get();
@@ -97,14 +97,12 @@ class ItemController extends Controller
         return redirect()->route('showItems');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         // $id = $request->id;
-        $item = Item::find($id);
-        dd($item);
-    
-        // $item->delete();
-
-        return view('Users.showItems');
+        $item = Item::find($request->id);
+        $item->delete();
+        
+        return redirect()->route('showItems');
     }
 }

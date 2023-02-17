@@ -8,7 +8,7 @@
 </head>
 <header>
     <div class="header-title">
-        <h1 class="title">Rent a Board</h1>
+        <h1 class="title"><a href="{{ route('top') }}" class="headerBtn">Rent a Board</a></h1>
     </div>
     <div class="header-menu">
         <ul>
@@ -25,9 +25,8 @@
     <div class="table">
         <table class="userItemsTable">
             <tr>
-                <th>ID</th>
                 <th>出品日</th>
-                <th>希望日</th>
+                <th>取引希望日</th>
                 <th>都道府県</th>
                 <th>希望取引場所</th>
                 <th>ブランド名</th>
@@ -41,8 +40,7 @@
             </tr> 
             @foreach($items as $item)
             <tr>
-                <td>{{ $item->id }}</td>
-                <td>{{ $item->created_at}}</td>
+                <td>{{ \Carbon\Carbon::parse($item->created_at)->format('Y/m/d') }}</td>
                 <td>{{ $item->trade_day }}</td> 
                 <td>{{ $item->prefecture->name}}</td>     
                 <td>{{ $item->trade_place }}</td>
@@ -56,12 +54,11 @@
                     {{-- <a class="btn" href="{{ route('updateItem', $item->id) }}">編集</a> <!--- 編集ボタンクリック時にクリック箇所のidをGETでに渡している ---> --}}
                     <button type="button" onclick="location.href='{{ route('updateItem', $item->id) }}'">編集</button>
                 </td>
-                <form action="{{ route('destroy', $item->id) }}" method="post" name="create-form">
+                <form action="{{ route('showItems', ['id' => $item->id]) }}" method="post" name="create-form">
                     @csrf
                     @method('delete')
                 <td class="delete">
                     <input type="submit" onclick="return confirm('本当に削除しますか？')" value="削除">
-                    {{-- <a href="{{ route('showItems', $item->id) }}" onclick="return confirm('本当に削除しますか？')" name="delete">削除</a> <!--- 削除ボタンクリック時にポップアップ表示 ---> --}}
                 </td>
             </tr>
             @endforeach

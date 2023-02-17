@@ -8,12 +8,12 @@
 </head>
 <header>
     <div class="header-title">
-        <h1 class="title">Rent a Board</h1>
+        <h1 class="title"><a href="{{ route('top') }}" class="headerBtn">Rent a Board</a></h1>
     </div>
     <div class="header-menu">
         <ul>
             <li><a href="{{ route('putUp') }}" class="headerBtn">出品</a></li>
-            <li><a href="{{ route('top') }}" class="headerBtn">ログアウト</a></li>
+            <li><a href="{{ route('logout') }}" class="headerBtn">ログアウト</a></li>
         </ul>
     </div>
 </header>

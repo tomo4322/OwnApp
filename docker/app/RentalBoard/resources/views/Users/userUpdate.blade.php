@@ -9,37 +9,34 @@
 <body>
     <div class="form-wrapper">
         <h1 class="">編集</h1>
-        <form action="{{ route('mypage') }}" method="post" name="create-form">
+        <form action="{{ route('update') }}" method="post" name="create-form">
         <table class="contact-table">
+            @csrf
             <table>
+
                 <tr>
                     <th class="contact-item">氏名</th>
                     <td>
-                    <input type="text" name="fullname" class="form-text" value=""/> 
-                    </td>
-                </tr>
-                <tr>
-                    <th class="contact-item" >生年月日</th>
-                    <td>
-                    <input type="text" name="birth" class="form-text" value=""/> 
+                    <input type="text" name="fullname" class="form-text" value="{{ old('fullname', $user->fullname) }}"/>
+                    <input type="hidden" name="user_id"  value="{{ old('user_id', $user->id) }}"/>  
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">住所</th>
                     <td>
-                    <input type="text" name="address" class="form-text" value=""/> 
+                    <input type="text" name="address" class="form-text" value="{{ old('address', $user->address) }}"/> 
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">メールアドレス</th>
                     <td>
-                    <input type="text" name="email" class="form-text" value=""/> 
+                    <input type="text" name="email" class="form-text" value="{{ old('email', $user->email) }}"/> 
                     </td>
                 </tr>
                 <tr>
                     <th class="contact-item">電話番号</th>
                     <td>
-                    <input type="text" name="tel" class="form-text" value=""/> 
+                    <input type="text" name="tel" class="form-text" value="{{ old('tel', $user->tel) }}"/> 
                     </td>
                 </tr>
             </table>

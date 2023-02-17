@@ -45,19 +45,19 @@
                 <th>お気に入り</th>
                 <th>お問い合わせ</th>
             </tr> 
-            {{-- トップ画面でクリックされた都道府県とひも付いたデータをDbから取得してループさせて表示 --}}
-            {{-- @foreach($items as $item) --}}
+            {{-- 検索結果が表示される --}}
+            @foreach ($items as $result)
             <tr>
-                {{-- <td>{{ \Carbon\Carbon::parse($item->created_at)->format('Y/m/d') }}</td>
-                <td>{{ $item->trade_day }}</td> 
-                <td>{{ $item->prefecture->name}}</td>     
-                <td>{{ $item->trade_place }}</td>
-                <td>{{ $item->brand->name }}</td>
-                <td>{{ $item->item_name }}</td>
-                <td>{{ $item->length }}</td>
-                <td>{{ $item->float }}</td>
-                <td>{{ $item->select }}</td>
-                <td>{{ $item->price }}</td> --}}
+                <td>{{ \Carbon\Carbon::parse($result->created_at)->format('Y/m/d') }}</td>
+                <td>{{ $result->trade_day }}</td> 
+                <td>{{ $result->prefecture->name}}</td>     
+                <td>{{ $result->trade_place }}</td>
+                <td>{{ $result->brand->name }}</td>
+                <td>{{ $result->item_name }}</td>
+                <td>{{ $result->length }}</td>
+                <td>{{ $result->float }}</td>
+                <td>{{ $result->select }}</td>
+                <td>{{ $result->price }}</td>
                 <td>
                     <p>💛</p> 
                 </td>
@@ -65,7 +65,7 @@
                     <a href="" name="chat">チャットする</a> 
                 </td>
             </tr>
-            {{-- @endforeach --}}
+            @endforeach
         </table>
         <div>
             <button type="button" onClick="history.back()">戻る</button>

@@ -12,7 +12,7 @@
     </div>
     <div class="header-menu">
         <ul>
-            <li><a href="{{ route('Top') }}" class="headerBtn">ログアウト</a></li>
+            <li><a href="{{ route('logout') }}" class="headerBtn">ログアウト</a></li>
         </ul>
     </div>
 </header>
